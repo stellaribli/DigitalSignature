@@ -8,6 +8,7 @@ from PyQt5.uic import loadUi
 import codecs
 import PyQt5.QtWidgets as pyqt
 import random
+import hashlib
 
 #FUNGSI KEY
 def gcd(x,y):
@@ -68,3 +69,7 @@ def generateKey(p, q):
         file_prikey.close()
     
     return(priKey,pubKey,n)
+def hashSHA(a):
+    hash_object = hashlib.sha1(a.encode())
+    pbHash = hash_object.hexdigest()
+    return pbHash
