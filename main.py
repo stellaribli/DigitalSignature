@@ -145,7 +145,9 @@ class VerifSatu(QDialog):
         loadUi("verifSigSatu.ui", self)
         self.backButton.clicked.connect(self.goBack)
         self.uploadButton.clicked.connect(self.upload)
+        self.uploadPub.clicked.connect(self.uploadKey)
         self.uploadedFile = None 
+        self.uploadedPub = None 
         self.namaFile = ''
         self.verifikasi.clicked.connect(self.result)
     def goBack(self):
@@ -163,7 +165,18 @@ class VerifSatu(QDialog):
             fileBaru = open(self.namaFile,'w')
             fileBaru.write(str(data))
             fileBaru.close()
-    
+    def uploadKey(self):
+        pubFile, _ = QFileDialog.getOpenFileName(self, "Upload File","","Text files (*.pub *.txt)")
+        if pubFile:
+            global dataPub
+            self.uploadedPub = pubFile
+            self.fileName2.setText(os.path.basename(pubFile))
+            file = open(pubFile,"rt")
+            dataPub = file.read()
+            file.close()
+            fileBaru = open('PublicKey.pub','w')
+            fileBaru.write(str(dataPub))
+            fileBaru.close()    
     def result(self):
         nilaiP = self.nilaip.text()
         nilaiQ = self.nilaiq.text()

@@ -66,9 +66,9 @@ font: 17pt &quot;Mulish&quot;;color:#fff;
   <widget class="QLineEdit" name="nilaip">
    <property name="geometry">
     <rect>
-     <x>240</x>
-     <y>140</y>
-     <width>151</width>
+     <x>220</x>
+     <y>190</y>
+     <width>91</width>
      <height>51</height>
     </rect>
    </property>
@@ -94,9 +94,9 @@ border:2px solid #7C99AC;</string>
   <widget class="QPushButton" name="verifikasi">
    <property name="geometry">
     <rect>
-     <x>240</x>
-     <y>200</y>
-     <width>321</width>
+     <x>420</x>
+     <y>190</y>
+     <width>161</width>
      <height>51</height>
     </rect>
    </property>
@@ -114,15 +114,15 @@ font: 17pt &quot;Mulish&quot;;color:#fff;
  }</string>
    </property>
    <property name="text">
-    <string>Verifikasi Signature</string>
+    <string>Verifikasi</string>
    </property>
   </widget>
   <widget class="QLineEdit" name="nilaiq">
    <property name="geometry">
     <rect>
-     <x>410</x>
-     <y>140</y>
-     <width>151</width>
+     <x>320</x>
+     <y>190</y>
+     <width>91</width>
      <height>51</height>
     </rect>
    </property>
@@ -149,9 +149,9 @@ border:2px solid #7C99AC;
   <widget class="QPushButton" name="uploadButton">
    <property name="geometry">
     <rect>
-     <x>240</x>
+     <x>220</x>
      <y>90</y>
-     <width>101</width>
+     <width>171</width>
      <height>41</height>
     </rect>
    </property>
@@ -169,13 +169,13 @@ font: 17pt &quot;Mulish&quot;;color:#fff;
  }</string>
    </property>
    <property name="text">
-    <string>Upload</string>
+    <string>Upload File</string>
    </property>
   </widget>
   <widget class="QLabel" name="fileName">
    <property name="geometry">
     <rect>
-     <x>350</x>
+     <x>400</x>
      <y>90</y>
      <width>211</width>
      <height>41</height>
@@ -192,7 +192,7 @@ font: 17pt &quot;Mulish&quot;;color:#fff;
    <property name="geometry">
     <rect>
      <x>220</x>
-     <y>260</y>
+     <y>250</y>
      <width>361</width>
      <height>31</height>
     </rect>
@@ -201,10 +201,52 @@ font: 17pt &quot;Mulish&quot;;color:#fff;
     <string notr="true">font: 10pt &quot;Mulish&quot;;color:#1D2D5E; </string>
    </property>
    <property name="text">
-    <string>Pastikan Key Sudah Digenerate</string>
+    <string>Verifikasi tanpa upload public key jika ingin menggunakan key sebelumnya</string>
    </property>
    <property name="alignment">
     <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="uploadPub">
+   <property name="geometry">
+    <rect>
+     <x>220</x>
+     <y>140</y>
+     <width>171</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{ 
+	background-color: #92A9BD; color:#FFFFFF;
+font: 17pt &quot;Mulish&quot;;color:#fff; 
+	border-radius: 13.25760269165039px;
+}
+
+ QPushButton:hover {
+	background-color: #7C99AC; color:#FFFFFF;
+font: 17pt &quot;Mulish&quot;;color:#fff; 
+	border-radius: 13.25760269165039px;
+ }</string>
+   </property>
+   <property name="text">
+    <string>Upload Public Key</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="fileName2">
+   <property name="geometry">
+    <rect>
+     <x>400</x>
+     <y>140</y>
+     <width>211</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 18pt &quot;Mulish&quot;;color:#000; </string>
+   </property>
+   <property name="text">
+    <string>File Belum Diupload!</string>
    </property>
   </widget>
  </widget>
