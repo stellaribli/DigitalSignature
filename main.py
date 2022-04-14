@@ -9,6 +9,8 @@ import codecs
 import PyQt5.QtWidgets as pyqt
 import random
 import hashlib
+import pytesseract
+import cv2
 
 #FUNGSI KEY
 def gcd(x,y):
@@ -74,12 +76,39 @@ def hashSHA(a):
     pbHash = hash_object.hexdigest()
     return pbHash
 
-def convHexa(a):
+def convHexaDec(a):
     return(int(a,16))
 def encSignature(h,n,privKey):
     result = (h**privKey) % n
-    print(h**privKey)
     return result
 
-print((21899**135)%227)
-# encSignature(218991964599382371228554013295471770148,223427,171635)
+# print((21899**135)%227)
+encSignature(218991964599382371228554013295471770148,223427,171635)
+
+# encSignature(248,2,15)
+
+#File Tidak Terpisah
+def insertSignatureSameFile(filename,signature):
+    file = open(filename,'rt')
+    teksawal = file.read()
+    fileBaru = open('Hasil.txt', 'w')
+    fileBaru.write(teksawal)
+    teksSign = '<ds>' + str(signature) + '</ds>'
+    fileBaru.write(teksSign)
+    file.close()
+    fileBaru.close()
+    return
+
+# def verifSignatureSameFile(filename,)
+insertSignatureSameFile('test.txt',1234)
+file = open('Hasil.txt', 'rt')
+text = file.read()
+idx = text.find('<ds>')
+idx2 = text.find('</ds>')
+print(idx,idx2)
+file.close()
+# print(file.read())
+# txt = 'Steeee'
+# file = open('CV.txt', 'w')
+# file.write(txt)
+# file.close()
