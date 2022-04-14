@@ -73,3 +73,13 @@ def hashSHA(a):
     hash_object = hashlib.sha1(a.encode())
     pbHash = hash_object.hexdigest()
     return pbHash
+
+def convHexa(a):
+    return(int(a,16))
+def encSignature(h,n,privKey):
+    result = (h**privKey) % n
+    print(h**privKey)
+    return result
+
+print((21899**135)%227)
+# encSignature(218991964599382371228554013295471770148,223427,171635)
