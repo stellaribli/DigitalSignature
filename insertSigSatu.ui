@@ -21,7 +21,7 @@
   <widget class="QPushButton" name="backButton">
    <property name="geometry">
     <rect>
-     <x>650</x>
+     <x>670</x>
      <y>20</y>
      <width>81</width>
      <height>41</height>

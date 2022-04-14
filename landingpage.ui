@@ -21,8 +21,8 @@
   <widget class="QPushButton" name="disatukan">
    <property name="geometry">
     <rect>
-     <x>400</x>
-     <y>140</y>
+     <x>420</x>
+     <y>130</y>
      <width>171</width>
      <height>71</height>
     </rect>
@@ -47,8 +47,8 @@ font: 15pt &quot;Mulish&quot;;color:#fff;
   <widget class="QLabel" name="label_2">
    <property name="geometry">
     <rect>
-     <x>220</x>
-     <y>30</y>
+     <x>250</x>
+     <y>60</y>
      <width>341</width>
      <height>51</height>
     </rect>
@@ -66,8 +66,8 @@ font: 15pt &quot;Mulish&quot;;color:#fff;
   <widget class="QPushButton" name="terpisah">
    <property name="geometry">
     <rect>
-     <x>210</x>
-     <y>140</y>
+     <x>230</x>
+     <y>130</y>
      <width>171</width>
      <height>71</height>
     </rect>
