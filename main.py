@@ -2,6 +2,8 @@ import base64
 import os
 import os.path
 import sys
+
+from numpy import insert
 from PyQt5.QtWidgets import QDialog, QApplication, QMessageBox, QFileDialog
 from PyQt5 import QtWidgets
 from PyQt5.uic import loadUi
@@ -89,7 +91,7 @@ def encSignature(h,n,Key):
 def insertSignatureSameFile(filename,signature): #Returns New File with Signature
     file = open(filename,'rt')
     teksawal = file.read()
-    fileBaru = open('Hasil.txt', 'w')
+    fileBaru = open(filename, 'w')
     fileBaru.write(teksawal)
     teksSign = '<ds>' + str(signature) + '</ds>'
     fileBaru.write(teksSign)
@@ -109,3 +111,31 @@ def readSignatureFile(filename): # Returns Error or Signature on File
         return(text[idx+4:idx2])
 
 
+p = 11
+q = 13
+#GenKeyButton
+generateKey(p,q)
+
+privKeyFile = open('PrivateKey.pri','r')
+privKey = int(privKeyFile.read())
+pubKeyFile = open('PublicKey.pub','r')
+pubKey = int(pubKeyFile.read())
+
+filename = 'test.txt'
+#InsertButton
+def insertButtonSameFile(filename,p,q,privKey):
+    signature = encSignature(hashSHA(filename),p*q,privKey)
+    insertSignatureSameFile(filename,signature)
+
+#VerifyButton
+def verifyButtonSameFile(filename,p,q,pubKey):
+    signature = int(readSignatureFile(filename))
+    hAksen = encSignature(signature,p*q,pubKey)
+    hashedPass = int(hashSHA(filename))%(p*q)
+    if hAksen == hashedPass:
+        return True
+    else:
+        return False
+
+insertButtonSameFile('test.txt',p,q,privKey)
+print(verifyButtonSameFile('test.txt',p,q,pubKey))
