@@ -60,7 +60,7 @@ font: 17pt &quot;Mulish&quot;;color:#fff;
     <string notr="true">font: 18pt &quot;Mulish&quot;;color:#000; </string>
    </property>
    <property name="text">
-    <string>Signature Belum Di Insert!</string>
+    <string/>
    </property>
    <property name="alignment">
     <set>Qt::AlignCenter</set>
@@ -111,7 +111,7 @@ padding-left:15px;</string>
     <string>Input P</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="encryptB">
+  <widget class="QPushButton" name="insertSig">
    <property name="geometry">
     <rect>
      <x>240</x>

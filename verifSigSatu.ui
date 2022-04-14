@@ -48,7 +48,7 @@ font: 17pt &quot;Mulish&quot;;color:#fff;
    <property name="geometry">
     <rect>
      <x>240</x>
-     <y>250</y>
+     <y>260</y>
      <width>321</width>
      <height>41</height>
     </rect>
@@ -60,7 +60,7 @@ font: 17pt &quot;Mulish&quot;;color:#fff;
     <string notr="true">font: 18pt &quot;Mulish&quot;;color:#000; </string>
    </property>
    <property name="text">
-    <string>Signature Belum Di Insert!</string>
+    <string>hasil</string>
    </property>
    <property name="alignment">
     <set>Qt::AlignCenter</set>
@@ -79,7 +79,7 @@ font: 17pt &quot;Mulish&quot;;color:#fff;
     <string notr="true">font: 20pt &quot;Mulish&quot;;color:#1D2D5E; </string>
    </property>
    <property name="text">
-    <string>Insert Signature</string>
+    <string>Verifikasi Signature</string>
    </property>
    <property name="alignment">
     <set>Qt::AlignCenter</set>
@@ -89,8 +89,8 @@ font: 17pt &quot;Mulish&quot;;color:#fff;
    <property name="geometry">
     <rect>
      <x>240</x>
-     <y>130</y>
-     <width>91</width>
+     <y>140</y>
+     <width>151</width>
      <height>51</height>
     </rect>
    </property>
@@ -101,11 +101,13 @@ width: 376.5159912109375px;
 left: 538px;
 top: 229px;
 border-radius: 13.25760269165039px;
-border:2px solid #7C99AC;
-padding-left:15px;</string>
+border:2px solid #7C99AC;</string>
    </property>
    <property name="text">
     <string/>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
    </property>
    <property name="placeholderText">
     <string>Input P</string>
@@ -115,7 +117,7 @@ padding-left:15px;</string>
    <property name="geometry">
     <rect>
      <x>240</x>
-     <y>190</y>
+     <y>200</y>
      <width>321</width>
      <height>51</height>
     </rect>
@@ -140,9 +142,9 @@ font: 17pt &quot;Mulish&quot;;color:#fff;
   <widget class="QLineEdit" name="nilaiq">
    <property name="geometry">
     <rect>
-     <x>340</x>
-     <y>130</y>
-     <width>91</width>
+     <x>410</x>
+     <y>140</y>
+     <width>151</width>
      <height>51</height>
     </rect>
    </property>
@@ -154,10 +156,13 @@ left: 538px;
 top: 229px;
 border-radius: 13.25760269165039px;
 border:2px solid #7C99AC;
-padding-left:15px;</string>
+</string>
    </property>
    <property name="text">
     <string/>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
    </property>
    <property name="placeholderText">
     <string>Input Q</string>
@@ -167,7 +172,7 @@ padding-left:15px;</string>
    <property name="geometry">
     <rect>
      <x>240</x>
-     <y>80</y>
+     <y>90</y>
      <width>101</width>
      <height>41</height>
     </rect>
@@ -193,7 +198,7 @@ font: 17pt &quot;Mulish&quot;;color:#fff;
    <property name="geometry">
     <rect>
      <x>350</x>
-     <y>80</y>
+     <y>90</y>
      <width>211</width>
      <height>41</height>
     </rect>
@@ -203,32 +208,6 @@ font: 17pt &quot;Mulish&quot;;color:#fff;
    </property>
    <property name="text">
     <string>File Belum Diupload!</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="genButton">
-   <property name="geometry">
-    <rect>
-     <x>440</x>
-     <y>130</y>
-     <width>121</width>
-     <height>51</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">QPushButton{ 
-	background-color: #92A9BD; color:#FFFFFF;
-font: 17pt &quot;Mulish&quot;;color:#fff; 
-	border-radius: 13.25760269165039px;
-}
-
- QPushButton:hover {
-	background-color: #7C99AC; color:#FFFFFF;
-font: 17pt &quot;Mulish&quot;;color:#fff; 
-	border-radius: 13.25760269165039px;
- }</string>
-   </property>
-   <property name="text">
-    <string>Generate Key</string>
    </property>
   </widget>
  </widget>
