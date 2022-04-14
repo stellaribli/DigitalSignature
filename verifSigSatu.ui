@@ -44,28 +44,6 @@ font: 17pt &quot;Mulish&quot;;color:#fff;
     <string>Back</string>
    </property>
   </widget>
-  <widget class="QLabel" name="hasil">
-   <property name="geometry">
-    <rect>
-     <x>240</x>
-     <y>260</y>
-     <width>321</width>
-     <height>41</height>
-    </rect>
-   </property>
-   <property name="toolTip">
-    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">font: 18pt &quot;Mulish&quot;;color:#000; </string>
-   </property>
-   <property name="text">
-    <string>hasil</string>
-   </property>
-   <property name="alignment">
-    <set>Qt::AlignCenter</set>
-   </property>
-  </widget>
   <widget class="QLabel" name="label_2">
    <property name="geometry">
     <rect>
@@ -113,7 +91,7 @@ border:2px solid #7C99AC;</string>
     <string>Input P</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="encryptB">
+  <widget class="QPushButton" name="verifikasi">
    <property name="geometry">
     <rect>
      <x>240</x>
@@ -136,7 +114,7 @@ font: 17pt &quot;Mulish&quot;;color:#fff;
  }</string>
    </property>
    <property name="text">
-    <string>Insert Signature</string>
+    <string>Verifikasi Signature</string>
    </property>
   </widget>
   <widget class="QLineEdit" name="nilaiq">

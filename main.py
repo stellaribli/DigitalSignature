@@ -1,8 +1,6 @@
-import base64
 import os
 import os.path
 import sys
-
 from numpy import insert
 from PyQt5.QtWidgets import QDialog, QApplication, QMessageBox, QFileDialog
 from PyQt5 import QtWidgets
@@ -11,8 +9,6 @@ import codecs
 import PyQt5.QtWidgets as pyqt
 import random
 import hashlib
-import pytesseract
-import cv2
 
 namaFile = ''
 #FUNGSI KEY
@@ -58,19 +54,12 @@ def generateKey(p, q):
                 found = 1    
             k = k+1
         priKey = int(priKey)
-        # print (str(pubKey)+" "+str(priKey)+" "+ str(n))
-        
-        # export public dan private key
         file_pubkey = open('PublicKey.pub', 'w')
         file_pubkey.write(str(pubKey))
-        # file_pubkey.write(" ")
-        # file_pubkey.write(str(n))
         file_pubkey.close()
 
         file_prikey = open('PrivateKey.pri', 'w')
         file_prikey.write(str(priKey))
-        # file_prikey.write(" ")
-        # file_prikey.write(str(n))
         file_prikey.close()
     
     return(priKey,pubKey,n)
@@ -78,12 +67,10 @@ def generateKey(p, q):
 #Algoritma Digital Signature
 def convHexaDec(hexa): 
     return(int(hexa,16))
-
 def hashSHA(text): #Returns hashed text in Decimals
     hash_object = hashlib.sha1(text.encode())
     pbHash = hash_object.hexdigest()
     return convHexaDec(pbHash)
-
 def encSignature(h,n,Key):
     result = (h**Key) % n
     return result
@@ -111,19 +98,6 @@ def readSignatureFile(filename): # Returns Error or Signature on File
     else:
         return(text[idx+4:idx2])
 
-
-p = 11
-q = 13
-#GenKeyButton
-generateKey(p,q)
-
-privKeyFile = open('PrivateKey.pri','r')
-privKey = int(privKeyFile.read())
-pubKeyFile = open('PublicKey.pub','r')
-pubKey = int(pubKeyFile.read())
-
-filename = 'test.txt'
-
 #InsertButton
 def insertButtonSameFile(filename,p,q,privKey):
     signature = encSignature(hashSHA(filename),p*q,privKey)
@@ -131,16 +105,17 @@ def insertButtonSameFile(filename,p,q,privKey):
 
 #VerifyButton
 def verifyButtonSameFile(filename,p,q,pubKey):
-    signature = int(readSignatureFile(filename))
-    hAksen = encSignature(signature,p*q,pubKey)
-    hashedPass = int(hashSHA(filename))%(p*q)
-    if hAksen == hashedPass:
-        return True
-    else:
+    signature = readSignatureFile(filename)
+    if signature == 'Error':
         return False
-
-# insertButtonSameFile('test.txt',p,q,privKey)
-# print(verifyButtonSameFile('test.txt',p,q,pubKey))
+    else:
+        signature = int(signature)
+        hAksen = encSignature(signature,p*q,pubKey)
+        hashedPass = int(hashSHA(filename))%(p*q)
+        if hAksen == hashedPass:
+            return True
+        else:
+            return False
 
 class Landing(QDialog):
     def __init__(self):
@@ -169,9 +144,52 @@ class VerifSatu(QDialog):
         super(VerifSatu, self).__init__()
         loadUi("verifSigSatu.ui", self)
         self.backButton.clicked.connect(self.goBack)
+        self.uploadButton.clicked.connect(self.upload)
+        self.uploadedFile = None 
+        self.namaFile = ''
+        self.verifikasi.clicked.connect(self.result)
     def goBack(self):
         widget.setCurrentIndex(1) 
-
+    def upload(self):
+        fileName, _ = QFileDialog.getOpenFileName(self, "Upload File","","Text files (*.txt)")
+        if fileName:
+            global data
+            self.uploadedFile = fileName
+            self.fileName.setText(os.path.basename(fileName))
+            self.namaFile = os.path.basename(fileName)
+            file = open(fileName,"rt")
+            data = file.read()
+            file.close()
+            fileBaru = open(self.namaFile,'w')
+            fileBaru.write(str(data))
+            fileBaru.close()
+    
+    def result(self):
+        nilaiP = self.nilaip.text()
+        nilaiQ = self.nilaiq.text()
+        if nilaiP == '' or nilaiQ == '' or self.namaFile == '':
+            msg = QMessageBox()
+            msg.setIcon(QMessageBox.Critical)
+            msg.setText("Error")
+            msg.setInformativeText('Pastikan seluruh field telah terisi!')
+            msg.exec_()  
+        else:
+            pubKeyFile = open('PublicKey.pub','r')
+            pubKey = int(pubKeyFile.read())
+            hasilVerifikasi = verifyButtonSameFile(self.namaFile,int(nilaiP),int(nilaiQ),pubKey)
+            if hasilVerifikasi:
+                msg = QMessageBox()
+                msg.setIcon(QMessageBox.Information)
+                msg.setText("Berhasil!")
+                msg.setInformativeText('Tanda Tangan Terverifikasi')
+                msg.exec_()         
+            else:
+                msg = QMessageBox()
+                msg.setIcon(QMessageBox.Critical)
+                msg.setText("Gagal")
+                msg.setInformativeText('Tanda Tangan Tidak Berhasil Diverifikasi')
+                msg.exec_()     
+                 
 class InsertSatu(QDialog):
     def __init__(self):
         super(InsertSatu, self).__init__()
@@ -182,7 +200,6 @@ class InsertSatu(QDialog):
         self.uploadedFile = None 
         self.namaFile = ''
         self.insertSig.clicked.connect(self.result)
-
     def goBack(self):
         widget.setCurrentIndex(1)  
     def genKey(self):
@@ -207,13 +224,11 @@ class InsertSatu(QDialog):
             global data
             self.uploadedFile = fileName
             self.fileName.setText(os.path.basename(fileName))
-            self.namaFile = os.path.basename(fileName)
+            self.namaFile = str(os.path.basename(fileName))
             data = open(fileName,"rt")
             fileBaru = open(self.namaFile,'w')
             fileBaru.write(str(data.read()))
-        else:
-            print("No file selected")     
-
+  
     def result(self):
         nilaiP = self.nilaip.text()
         nilaiQ = self.nilaiq.text()
@@ -232,6 +247,7 @@ class InsertSatu(QDialog):
             msg.setText("Berhasil!")
             msg.setInformativeText('Tanda Tangan Berhasil diinput!')
             msg.exec_()  
+
 app = QApplication(sys.argv)
 widget = QtWidgets.QStackedWidget()
 widget.addWidget(Landing())  # Index jadi 0
