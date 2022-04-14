@@ -71,24 +71,22 @@ def generateKey(p, q):
         file_prikey.close()
     
     return(priKey,pubKey,n)
-def hashSHA(a):
-    hash_object = hashlib.sha1(a.encode())
-    pbHash = hash_object.hexdigest()
-    return pbHash
 
-def convHexaDec(a):
-    return(int(a,16))
-def encSignature(h,n,privKey):
-    result = (h**privKey) % n
+#Algoritma Digital Signature
+def convHexaDec(hexa): 
+    return(int(hexa,16))
+
+def hashSHA(text): #Returns hashed text in Decimals
+    hash_object = hashlib.sha1(text.encode())
+    pbHash = hash_object.hexdigest()
+    return convHexaDec(pbHash)
+
+def encSignature(h,n,Key):
+    result = (h**Key) % n
     return result
 
-# print((21899**135)%227)
-encSignature(218991964599382371228554013295471770148,223427,171635)
-
-# encSignature(248,2,15)
-
 #File Tidak Terpisah
-def insertSignatureSameFile(filename,signature):
+def insertSignatureSameFile(filename,signature): #Returns New File with Signature
     file = open(filename,'rt')
     teksawal = file.read()
     fileBaru = open('Hasil.txt', 'w')
@@ -99,16 +97,15 @@ def insertSignatureSameFile(filename,signature):
     fileBaru.close()
     return
 
-# def verifSignatureSameFile(filename,)
-insertSignatureSameFile('test.txt',1234)
-file = open('Hasil.txt', 'rt')
-text = file.read()
-idx = text.find('<ds>')
-idx2 = text.find('</ds>')
-print(idx,idx2)
-file.close()
-# print(file.read())
-# txt = 'Steeee'
-# file = open('CV.txt', 'w')
-# file.write(txt)
-# file.close()
+def readSignatureFile(filename): # Returns Error or Signature on File
+    file = open(filename, 'rt')
+    text = file.read()
+    idx = text.find('<ds>')
+    idx2 = text.find('</ds>')
+    file.close()
+    if ((idx == -1) or (idx2 == -1)):
+        return 'Error'
+    else:
+        return(text[idx+4:idx2])
+
+
