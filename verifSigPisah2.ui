@@ -67,7 +67,7 @@ font: 17pt &quot;Mulish&quot;;color:#fff;
    <property name="geometry">
     <rect>
      <x>220</x>
-     <y>190</y>
+     <y>220</y>
      <width>91</width>
      <height>51</height>
     </rect>
@@ -95,7 +95,7 @@ border:2px solid #7C99AC;</string>
    <property name="geometry">
     <rect>
      <x>420</x>
-     <y>190</y>
+     <y>220</y>
      <width>161</width>
      <height>51</height>
     </rect>
@@ -121,7 +121,7 @@ font: 17pt &quot;Mulish&quot;;color:#fff;
    <property name="geometry">
     <rect>
      <x>320</x>
-     <y>190</y>
+     <y>220</y>
      <width>91</width>
      <height>51</height>
     </rect>
@@ -150,7 +150,7 @@ border:2px solid #7C99AC;
    <property name="geometry">
     <rect>
      <x>220</x>
-     <y>90</y>
+     <y>70</y>
      <width>171</width>
      <height>41</height>
     </rect>
@@ -176,7 +176,7 @@ font: 17pt &quot;Mulish&quot;;color:#fff;
    <property name="geometry">
     <rect>
      <x>400</x>
-     <y>90</y>
+     <y>70</y>
      <width>211</width>
      <height>41</height>
     </rect>
@@ -192,7 +192,7 @@ font: 17pt &quot;Mulish&quot;;color:#fff;
    <property name="geometry">
     <rect>
      <x>220</x>
-     <y>250</y>
+     <y>280</y>
      <width>361</width>
      <height>31</height>
     </rect>
@@ -211,7 +211,7 @@ font: 17pt &quot;Mulish&quot;;color:#fff;
    <property name="geometry">
     <rect>
      <x>220</x>
-     <y>140</y>
+     <y>170</y>
      <width>171</width>
      <height>41</height>
     </rect>
@@ -237,7 +237,49 @@ font: 17pt &quot;Mulish&quot;;color:#fff;
    <property name="geometry">
     <rect>
      <x>400</x>
-     <y>140</y>
+     <y>170</y>
+     <width>211</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 18pt &quot;Mulish&quot;;color:#000; </string>
+   </property>
+   <property name="text">
+    <string>File Belum Diupload!</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="uploadSign">
+   <property name="geometry">
+    <rect>
+     <x>220</x>
+     <y>120</y>
+     <width>171</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{ 
+	background-color: #92A9BD; color:#FFFFFF;
+font: 17pt &quot;Mulish&quot;;color:#fff; 
+	border-radius: 13.25760269165039px;
+}
+
+ QPushButton:hover {
+	background-color: #7C99AC; color:#FFFFFF;
+font: 17pt &quot;Mulish&quot;;color:#fff; 
+	border-radius: 13.25760269165039px;
+ }</string>
+   </property>
+   <property name="text">
+    <string>Upload Sign</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="fileName3">
+   <property name="geometry">
+    <rect>
+     <x>400</x>
+     <y>120</y>
      <width>211</width>
      <height>41</height>
     </rect>

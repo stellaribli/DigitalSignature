@@ -21,7 +21,7 @@
   <widget class="QPushButton" name="backButton">
    <property name="geometry">
     <rect>
-     <x>680</x>
+     <x>670</x>
      <y>20</y>
      <width>81</width>
      <height>41</height>
@@ -44,6 +44,28 @@ font: 17pt &quot;Mulish&quot;;color:#fff;
     <string>Back</string>
    </property>
   </widget>
+  <widget class="QLabel" name="hasil">
+   <property name="geometry">
+    <rect>
+     <x>240</x>
+     <y>250</y>
+     <width>321</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="toolTip">
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 18pt &quot;Mulish&quot;;color:#000; </string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
   <widget class="QLabel" name="label_2">
    <property name="geometry">
     <rect>
@@ -57,7 +79,7 @@ font: 17pt &quot;Mulish&quot;;color:#fff;
     <string notr="true">font: 20pt &quot;Mulish&quot;;color:#1D2D5E; </string>
    </property>
    <property name="text">
-    <string>Verifikasi Signature</string>
+    <string>Insert Signature</string>
    </property>
    <property name="alignment">
     <set>Qt::AlignCenter</set>
@@ -66,62 +88,8 @@ font: 17pt &quot;Mulish&quot;;color:#fff;
   <widget class="QLineEdit" name="nilaip">
    <property name="geometry">
     <rect>
-     <x>220</x>
-     <y>190</y>
-     <width>91</width>
-     <height>51</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">font: 15pt &quot;Mulish&quot;;color:#1D2D5E; 
-height: 47.76695251464844px;
-width: 376.5159912109375px;
-left: 538px;
-top: 229px;
-border-radius: 13.25760269165039px;
-border:2px solid #7C99AC;</string>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-   <property name="alignment">
-    <set>Qt::AlignCenter</set>
-   </property>
-   <property name="placeholderText">
-    <string>Input P</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="verifikasi">
-   <property name="geometry">
-    <rect>
-     <x>420</x>
-     <y>190</y>
-     <width>161</width>
-     <height>51</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">QPushButton{ 
-	background-color: #92A9BD; color:#FFFFFF;
-font: 17pt &quot;Mulish&quot;;color:#fff; 
-	border-radius: 13.25760269165039px;
-}
-
- QPushButton:hover {
-	background-color: #7C99AC; color:#FFFFFF;
-font: 17pt &quot;Mulish&quot;;color:#fff; 
-	border-radius: 13.25760269165039px;
- }</string>
-   </property>
-   <property name="text">
-    <string>Verifikasi</string>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="nilaiq">
-   <property name="geometry">
-    <rect>
-     <x>320</x>
-     <y>190</y>
+     <x>240</x>
+     <y>130</y>
      <width>91</width>
      <height>51</height>
     </rect>
@@ -134,13 +102,62 @@ left: 538px;
 top: 229px;
 border-radius: 13.25760269165039px;
 border:2px solid #7C99AC;
-</string>
+padding-left:15px;</string>
    </property>
    <property name="text">
     <string/>
    </property>
-   <property name="alignment">
-    <set>Qt::AlignCenter</set>
+   <property name="placeholderText">
+    <string>Input P</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="insertSig">
+   <property name="geometry">
+    <rect>
+     <x>240</x>
+     <y>190</y>
+     <width>321</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{ 
+	background-color: #92A9BD; color:#FFFFFF;
+font: 17pt &quot;Mulish&quot;;color:#fff; 
+	border-radius: 13.25760269165039px;
+}
+
+ QPushButton:hover {
+	background-color: #7C99AC; color:#FFFFFF;
+font: 17pt &quot;Mulish&quot;;color:#fff; 
+	border-radius: 13.25760269165039px;
+ }</string>
+   </property>
+   <property name="text">
+    <string>Insert Signature</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="nilaiq">
+   <property name="geometry">
+    <rect>
+     <x>340</x>
+     <y>130</y>
+     <width>91</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 15pt &quot;Mulish&quot;;color:#1D2D5E; 
+height: 47.76695251464844px;
+width: 376.5159912109375px;
+left: 538px;
+top: 229px;
+border-radius: 13.25760269165039px;
+border:2px solid #7C99AC;
+padding-left:15px;</string>
+   </property>
+   <property name="text">
+    <string/>
    </property>
    <property name="placeholderText">
     <string>Input Q</string>
@@ -149,9 +166,9 @@ border:2px solid #7C99AC;
   <widget class="QPushButton" name="uploadButton">
    <property name="geometry">
     <rect>
-     <x>220</x>
-     <y>90</y>
-     <width>171</width>
+     <x>240</x>
+     <y>80</y>
+     <width>101</width>
      <height>41</height>
     </rect>
    </property>
@@ -169,14 +186,14 @@ font: 17pt &quot;Mulish&quot;;color:#fff;
  }</string>
    </property>
    <property name="text">
-    <string>Upload File</string>
+    <string>Upload</string>
    </property>
   </widget>
   <widget class="QLabel" name="fileName">
    <property name="geometry">
     <rect>
-     <x>400</x>
-     <y>90</y>
+     <x>350</x>
+     <y>80</y>
      <width>211</width>
      <height>41</height>
     </rect>
@@ -188,32 +205,13 @@ font: 17pt &quot;Mulish&quot;;color:#fff;
     <string>File Belum Diupload!</string>
    </property>
   </widget>
-  <widget class="QLabel" name="label_5">
+  <widget class="QPushButton" name="genButton">
    <property name="geometry">
     <rect>
-     <x>220</x>
-     <y>250</y>
-     <width>361</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">font: 10pt &quot;Mulish&quot;;color:#1D2D5E; </string>
-   </property>
-   <property name="text">
-    <string>Verifikasi tanpa upload public key jika ingin menggunakan key sebelumnya</string>
-   </property>
-   <property name="alignment">
-    <set>Qt::AlignCenter</set>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="uploadPub">
-   <property name="geometry">
-    <rect>
-     <x>220</x>
-     <y>140</y>
-     <width>171</width>
-     <height>41</height>
+     <x>440</x>
+     <y>130</y>
+     <width>121</width>
+     <height>51</height>
     </rect>
    </property>
    <property name="styleSheet">
@@ -230,23 +228,7 @@ font: 17pt &quot;Mulish&quot;;color:#fff;
  }</string>
    </property>
    <property name="text">
-    <string>Upload Public Key</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="fileName2">
-   <property name="geometry">
-    <rect>
-     <x>400</x>
-     <y>140</y>
-     <width>211</width>
-     <height>41</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">font: 18pt &quot;Mulish&quot;;color:#000; </string>
-   </property>
-   <property name="text">
-    <string>File Belum Diupload!</string>
+    <string>Generate Key</string>
    </property>
   </widget>
  </widget>
