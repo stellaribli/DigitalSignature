@@ -64,6 +64,17 @@ def generateKey(p, q):
     
     return(priKey,pubKey,n)
 
+def readFile(filename):
+    file = open(filename, 'rt')
+    text = file.read()
+    idx = text.find('<ds>')
+    idx2 = text.find('</ds>')
+    file.close()
+    if ((idx == -1) or (idx2 == -1)):
+        return 'Error'
+    else:
+        return(text[:idx])
+
 #Algoritma Digital Signature
 def convHexaDec(hexa): 
     return(int(hexa,16))
@@ -71,13 +82,16 @@ def hashSHA(text): #Returns hashed text in Decimals
     hash_object = hashlib.sha1(text.encode())
     pbHash = hash_object.hexdigest()
     return convHexaDec(pbHash)
+
 def encSignature(h,n,Key):
     result = (h**Key) % n
     return result
 
 #File Terpisah
 def insertSignaturePisah(filename,p, q, privKey): #export signature to a new file
-    signature = encSignature(hashSHA(filename),p*q,privKey)
+    file = open(filename,'rt')
+    isifile = file.read()
+    signature = encSignature(hashSHA(isifile),p*q,privKey)
     fileBaru = open('Sign.txt', 'w')
     teksSign = '<ds>' + str(hex(signature)) + '</ds>'
     fileBaru.write(teksSign)
@@ -90,7 +104,9 @@ def verifyPisah(filename,filesignature,p,q,pubKey):
     else:
         signature = convHexaDec(signature)
         hAksen = encSignature(signature,p*q,pubKey)
-        hashedPass = int(hashSHA(filename))%(p*q)
+        file = open(filename,'rt')
+        isifile = file.read()
+        hashedPass = int(hashSHA(isifile))%(p*q)
         if hAksen == hashedPass:
             return True
         else:
@@ -120,7 +136,9 @@ def readSignatureFile(filename): # Returns Error or Signature on File
 
 #InsertButton
 def insertButtonSameFile(filename,p,q,privKey):
-    signature = encSignature(hashSHA(filename),p*q,privKey)
+    file = open(filename, 'rt')
+    isifile = str(file.read())
+    signature = encSignature(hashSHA(isifile),p*q,privKey)
     signature = hex(signature)
     insertSignatureSameFile(filename,signature)
 
@@ -131,8 +149,10 @@ def verifyButtonSameFile(filename,p,q,pubKey):
         return 'Tidak Ada'
     else:
         signature = convHexaDec(signature)
+        isifile = readFile(filename)
         hAksen = encSignature(signature,p*q,pubKey)
-        hashedPass = int(hashSHA(filename))%(p*q)
+        hashedPass = int(hashSHA(isifile))%(p*q)
+        print(hAksen, hashedPass)
         if hAksen == hashedPass:
             return 'True'
         else:
