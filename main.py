@@ -77,14 +77,9 @@ def encSignature(h,n,Key):
 
 #File Terpisah
 def insertSignaturePisah(filename,p, q, privKey): #export signature to a new file
-    # file = open(filename,'rt')
-
-    # file.close()
     signature = encSignature(hashSHA(filename),p*q,privKey)
     fileBaru = open('Sign.txt', 'w')
-    teksSign = '<ds>' + str(signature) + '</ds>'
-    
-    # file.write(teksawal)
+    teksSign = '<ds>' + str(hex(signature)) + '</ds>'
     fileBaru.write(teksSign)
     fileBaru.close()
     return 
@@ -93,7 +88,7 @@ def verifyPisah(filename,filesignature,p,q,pubKey):
     if signature == 'Error':
         return False
     else:
-        signature = int(signature)
+        signature = convHexaDec(signature)
         hAksen = encSignature(signature,p*q,pubKey)
         hashedPass = int(hashSHA(filename))%(p*q)
         if hAksen == hashedPass:
@@ -126,25 +121,22 @@ def readSignatureFile(filename): # Returns Error or Signature on File
 #InsertButton
 def insertButtonSameFile(filename,p,q,privKey):
     signature = encSignature(hashSHA(filename),p*q,privKey)
+    signature = hex(signature)
     insertSignatureSameFile(filename,signature)
-
-
 
 #VerifyButton
 def verifyButtonSameFile(filename,p,q,pubKey):
     signature = readSignatureFile(filename)
     if signature == 'Error':
-        return False
+        return 'Tidak Ada'
     else:
-        signature = int(signature)
+        signature = convHexaDec(signature)
         hAksen = encSignature(signature,p*q,pubKey)
         hashedPass = int(hashSHA(filename))%(p*q)
         if hAksen == hashedPass:
-            return True
+            return 'True'
         else:
-            return False
-
-
+            return 'Tidak Sesuai'
 
 class Landing(QDialog):
     def __init__(self):
@@ -376,18 +368,25 @@ class VerifSatu(QDialog):
             pubKeyFile = open('PublicKey.pub','r')
             pubKey = int(pubKeyFile.read())
             hasilVerifikasi = verifyButtonSameFile(self.namaFile,int(nilaiP),int(nilaiQ),pubKey)
-            if hasilVerifikasi:
+            if hasilVerifikasi == 'True':
                 msg = QMessageBox()
                 msg.setIcon(QMessageBox.Information)
                 msg.setText("Berhasil!")
                 msg.setInformativeText('Tanda Tangan Terverifikasi')
                 msg.exec_()         
             else:
-                msg = QMessageBox()
-                msg.setIcon(QMessageBox.Critical)
-                msg.setText("Gagal")
-                msg.setInformativeText('Tanda Tangan Tidak Berhasil Diverifikasi')
-                msg.exec_()     
+                if hasilVerifikasi == 'Tidak Ada':
+                    msg = QMessageBox()
+                    msg.setIcon(QMessageBox.Critical)
+                    msg.setText("Gagal")
+                    msg.setInformativeText('Tanda Tangan Tidak Ada')
+                    msg.exec_()    
+                else:
+                    msg = QMessageBox()
+                    msg.setIcon(QMessageBox.Critical)
+                    msg.setText("Gagal")
+                    msg.setInformativeText('Tanda Tangan Tidak Berhasil Diverifikasi')
+                    msg.exec_()     
                  
 class InsertSatu(QDialog):
     def __init__(self):
@@ -443,7 +442,6 @@ class InsertSatu(QDialog):
         else:
             privKeyFile = open('PrivateKey.pri','r')
             privKey = int(privKeyFile.read())
-            # privKeyFile.close()
             insertButtonSameFile(self.namaFile,int(nilaiP),int(nilaiQ),privKey)
             msg = QMessageBox()
             msg.setIcon(QMessageBox.Information)
